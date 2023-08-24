@@ -1,0 +1,48 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: Ashok-poi-map-app-dev
+  annotations:
+    argocd/app-name: Ashok-poi-map-app-dev
+    backstage.io/kubernetes-id: Ashok-poi-map-app
+    backstage.io/kubernetes-namespace: Ashok
+    backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: rhdh-atl/Ashok-frontend
+    janus-idp.io/tekton-enabled: 'true'
+  tags:
+    - typescript
+    - angular
+    - workshop
+  links:
+    - url: https://console-openshift-console.apps.j0i9yf30.eastus2.aroapp.io/dev-pipelines/ns/Ashok/
+      title: Pipelines
+      icon: web
+    - url: https://console-openshift-console.apps.j0i9yf30.eastus2.aroapp.io/k8s/ns/Ashok/deployments/Ashok-poi-map-app
+      title: Deployment
+      icon: web
+    - url: https://devspaces.apps.j0i9yf30.eastus2.aroapp.io/#https://github.com/rhdh-atl/Ashok-frontend?che-editor=che-incubator/che-code/latest&devfilePath=.devfile-vscode.yaml
+      title: OpenShift Dev Spaces (VS Code)
+      icon: web
+    - url: http://Ashok-poi-map-app-Ashok.apps.j0i9yf30.eastus2.aroapp.io
+      title: Map
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: "aryanvarma"
+  system: workshop-system-Ashok
+  consumesApis:
+    - gateway-api-Ashok
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: workshop-system-Ashok
+  tags:
+    - backstage
+    - janus-idp
+    - openshift
+    - workshop
+    - rh-summit
+spec:
+  owner: "aryanvarma"
